@@ -85,4 +85,7 @@ protected:
     ofPoint acc; 
     float damping;
     float stickyDistance;     
+//yale
+public:
+	bool isScrolled;
 };

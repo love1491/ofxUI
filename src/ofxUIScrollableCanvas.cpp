@@ -76,6 +76,9 @@ void ofxUIScrollableCanvas::initScrollable()
 #ifdef OFX_UI_TARGET_TOUCH
     touchId = -1;
 #endif
+
+	//yale
+	isScrolled=false;
 }
 
 void ofxUIScrollableCanvas::setDamping(float _damping)
@@ -488,14 +491,9 @@ void ofxUIScrollableCanvas::touchCancelled(float x, float y, int id)
 
 void ofxUIScrollableCanvas::mouseDragged(int x, int y, int button)
 {
-    for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
-    {
-        if((*it)->isVisible())	(*it)->mouseDragged(x, y, button);
-    }
-    
     if(hit)
     {
-        if(!hitWidget)
+		if(!hitWidget||hitWidget)
         {
             if(isScrolling != true)
             {
@@ -510,14 +508,23 @@ void ofxUIScrollableCanvas::mouseDragged(int x, int y, int button)
                 if(scrollX) rect->x +=vel.x;
                 if(scrollY) rect->y +=vel.y;
                 ppos = pos;
+				isScrolled=true;
             }
         }
     }
+	if(!isScrolling){
+		for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
+		{
+			if((*it)->isVisible())	
+				(*it)->mouseDragged(x, y, button);
+		}
+	}
+
 }
 
 void ofxUIScrollableCanvas::mousePressed(int x, int y, int button)
 {
-    if(sRect->inside(x, y))
+	if(sRect->inside(x, y))
     {
         hit = true;
         for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
@@ -530,7 +537,7 @@ void ofxUIScrollableCanvas::mousePressed(int x, int y, int button)
                     {
                         hitWidget = true;
                     }
-                    (*it)->mousePressed(x, y, button);
+					(*it)->mousePressed(x, y, button);
                 }
             }
         }
@@ -542,10 +549,33 @@ void ofxUIScrollableCanvas::mousePressed(int x, int y, int button)
 
 void ofxUIScrollableCanvas::mouseReleased(int x, int y, int button)
 {
-    for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
+	if(sRect->inside(x, y))
     {
-        if((*it)->isVisible()) (*it)->mouseReleased(x, y, button);
+        hit = true;
+        for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
+        {
+            if((*it)->isVisible())
+            {
+                if((*it)->isHit(x, y))
+                {
+                    if((*it)->isDraggable())
+                    {
+                        hitWidget = true;
+                    }
+					if(!isScrolled){
+						(*it)->mouseReleased(x, y, button);
+					}else{
+						isScrolled=false;
+					}
+                }
+            }
+        }
     }
+   // for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
+   // {
+   //     if((*it)->isVisible()) 
+			//(*it)->mouseReleased(x, y, button);
+   // }
     
     hit = false;
     hitWidget = false;

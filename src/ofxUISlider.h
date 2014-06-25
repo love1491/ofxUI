@@ -95,6 +95,9 @@ public:
     virtual void loadState(ofxXmlSettings *XML);
 #endif    
     
+	//yale
+	double startX,startY;
+
 protected:
     bool bRoundedToNearestInt;
     bool bClampValue;

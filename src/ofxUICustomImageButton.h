@@ -24,14 +24,28 @@
 
 #pragma once
 
-#include "ofxUIDefines.h"
-#include "ofxUIWidget.h"
-#include "ofxUIWidgetWithLabel.h"
-#include "ofxUIEventArgs.h"
-#include "ofxUIWidgets.h"
-#include "ofxUICanvas.h"
-#include "ofxUIMyCanvas.h"
-#include "ofxUIScrollableCanvas.h"
-#include "ofxUISuperCanvas.h"
-#include "ofxUISuperCanvas2.h"
-#include "ofxUITabBar.h"
+#include "ofxUIButton.h"
+
+class ofxUICustomImageButton : public ofxUIButton
+{
+public:
+    ofxUICustomImageButton(float w, float h, bool _value, string _pathURL, string _name, int _size, int _labelWidth, int _labelHeight);
+    ofxUICustomImageButton(float w, float h, bool _value, string _pathURL, string _name, int _size, bool centerLabel = false);
+    ofxUICustomImageButton(float w, float h, bool _value, ofImage *_img, string _name, int _size, int _labelWidth, int _labelHeight);
+    ofxUICustomImageButton(float w, float h, bool _value, ofImage *_img, string _name, int _size, bool centerLabel = false);
+    ~ofxUICustomImageButton();
+    void init(bool *_value, string _pathURL, string _name, int _size, int _labelWidth, int _labelHeight);
+    void init(bool *_value, ofImage *_img, string _name, int _size, int _labelWidth, int _labelHeight);
+	void setParent(ofxUIWidget *_parent);
+    virtual void drawBack();
+    virtual void drawOutline();
+    virtual void drawOutlineHighlight();
+    virtual void drawFill();
+    virtual void drawFillHighlight();
+    void setImage(ofImage *_image);
+    
+protected:
+    bool autoSize; 
+    ofxUIRectangle *labelBackgroundRect; 
+    ofImage *image; 
+}; 

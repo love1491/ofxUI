@@ -502,7 +502,7 @@ void ofxUICanvas::disable()
 
 void ofxUICanvas::update()
 {
-    if (!isVisible()) { return; } // Custom to save framerate
+	if (!isVisible()||!autoUpdate) { return; } // Custom to save framerate
     for(vector<ofxUIWidget *>::iterator it = widgets.begin(); it != widgets.end(); ++it)
     {
         (*it)->update();
@@ -511,6 +511,8 @@ void ofxUICanvas::update()
 
 void ofxUICanvas::draw()
 {
+	if(!autoDraw)
+		return;
     ofxUIPushStyle();
     
     glDisable(GL_DEPTH_TEST);

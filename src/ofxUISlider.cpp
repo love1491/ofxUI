@@ -289,7 +289,11 @@ void ofxUISlider_<T>::mouseDragged(int x, int y, int button)
     if(hit)
     {
         state = OFX_UI_STATE_DOWN;
-        input(x, y);
+		//yale
+        //input(x, y);
+		cout<<"value:"<<value<<endl<<"startX:"<<startX<<endl<<"x:"<<x<<endl;
+		input(x, y);
+		
         if(triggerType & OFX_UI_TRIGGER_CHANGE)
         {
             triggerEvent(this);
@@ -309,7 +313,9 @@ void ofxUISlider_<T>::mousePressed(int x, int y, int button)
     {
         hit = true;
         state = OFX_UI_STATE_DOWN;
-        input(x, y);
+        //yale
+		//input(x, y);
+		startX=x;startY=y;
         if(triggerType & OFX_UI_TRIGGER_BEGIN)
         {
             triggerEvent(this);
