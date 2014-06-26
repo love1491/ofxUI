@@ -50,4 +50,5 @@ public:
     int getKind();
     
     ofxUIWidget *widget;
+
 }; 

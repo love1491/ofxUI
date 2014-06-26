@@ -2115,9 +2115,9 @@ void ofxUICanvas::setRetinaResolution()
     setGlobalCanvasWidth(OFX_UI_GLOBAL_CANVAS_WIDTH*2);
     setPadding(OFX_UI_GLOBAL_PADDING*2);
     setWidgetSpacing(OFX_UI_GLOBAL_WIDGET_SPACING*2);
-    setFontSize(OFX_UI_FONT_LARGE, OFX_UI_FONT_LARGE_SIZE*2);
-    setFontSize(OFX_UI_FONT_MEDIUM, OFX_UI_FONT_MEDIUM_SIZE*2);
-    setFontSize(OFX_UI_FONT_SMALL, OFX_UI_FONT_SMALL_SIZE*2);
+    setFontSize(OFX_UI_FONT_LARGE, OFX_UI_FONT_LARGE_SIZE*3);
+    setFontSize(OFX_UI_FONT_MEDIUM, OFX_UI_FONT_MEDIUM_SIZE*3);
+    setFontSize(OFX_UI_FONT_SMALL, OFX_UI_FONT_SMALL_SIZE*3);
     setGlobalButtonDimension(OFX_UI_GLOBAL_BUTTON_DIMENSION*4);
     setGlobalSliderHeight(OFX_UI_GLOBAL_SLIDER_HEIGHT*4);
     setGlobalSpacerHeight(OFX_UI_GLOBAL_SPACING_HEIGHT*2);

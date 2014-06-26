@@ -66,6 +66,7 @@ public:
 	virtual void mouseDragged(int x, int y, int button) {}
 	virtual void mousePressed(int x, int y, int button) {}
 	virtual void mouseReleased(int x, int y, int button) {}
+	virtual void MymouseReleased(int x,int y,int button){}
     
 	virtual void keyPressed(int key) {}
 	virtual void keyReleased(int key) {}
@@ -217,4 +218,9 @@ protected:
 #ifdef OFX_UI_TARGET_TOUCH       
     int touchId;     
 #endif
+
+public :
+    int getState(){
+    	return state;
+    }
 };

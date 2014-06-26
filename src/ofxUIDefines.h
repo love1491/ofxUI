@@ -29,15 +29,15 @@
 #endif
 
 #ifdef TARGET_OF_IOS
-    #define OFX_UI_FONT_NAME "GUI/Helvetica.ttf"
+    #define OFX_UI_FONT_NAME "verdana.ttf"
 #else
-    #define OFX_UI_FONT_NAME "sans-serif"
+    #define OFX_UI_FONT_NAME "verdana.ttf"
 #endif
 
 #define OFX_UI_FONT_RESOLUTION 150
-#define OFX_UI_FONT_LARGE_SIZE 10
-#define OFX_UI_FONT_MEDIUM_SIZE 8
-#define OFX_UI_FONT_SMALL_SIZE 6
+#define OFX_UI_FONT_LARGE_SIZE 20
+#define OFX_UI_FONT_MEDIUM_SIZE 16
+#define OFX_UI_FONT_SMALL_SIZE 12
 
 #define OFX_UI_LABEL_DRAW_BACK false
 

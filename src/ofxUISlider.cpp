@@ -351,7 +351,28 @@ void ofxUISlider_<T>::mouseReleased(int x, int y, int button)
     stateChange();
     hit = false;
 }
+template<typename T>
+void ofxUISlider_<T>::MymouseReleased(int x,int y,int button){
+    if(hit)
+    {
+#ifdef OFX_UI_TARGET_TOUCH
+        state = OFX_UI_STATE_NORMAL;
+#else
+        state = OFX_UI_STATE_OVER;
+#endif
 
+        if(triggerType & OFX_UI_TRIGGER_END)
+        {
+            triggerEvent(this);
+        }
+    }
+    else
+    {
+        state = OFX_UI_STATE_NORMAL;
+    }
+    stateChange();
+    hit = false;
+}
 template<typename T>
 void ofxUISlider_<T>::keyPressed(int key)
 {
